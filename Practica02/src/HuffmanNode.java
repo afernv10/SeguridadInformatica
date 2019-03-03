@@ -1,27 +1,27 @@
-import java.util.ArrayList;
+
 
 public class HuffmanNode {
 	
-	private double valor;
-	private String posicion;
+	private int valor;
+	private char c;
 	
 	HuffmanNode left;
 	HuffmanNode right;
 	
-	public double getValor() {
+	public int getValor() {
 		return valor;
 	}
 	
-	public void setValor(double valor) {
+	public void setValor(int valor) {
 		this.valor = valor;
 	}
 
-	public String getPosicion() {
-		return posicion;
+	public char getC() {
+		return c;
 	}
 
-	public void setPosicion(String idsPosicion) {
-		this.posicion = idsPosicion;
+	public void setC(char c) {
+		this.c = c;
 	}
 	
 	public HuffmanNode getLeft() {
