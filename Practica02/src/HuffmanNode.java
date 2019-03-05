@@ -2,18 +2,20 @@
 
 public class HuffmanNode {
 	
-	private int valor;
+	private double valor;
 	private char c;
+	private String code;
+	private int longitudCode;
 	
 	HuffmanNode left;
 	HuffmanNode right;
 	
-	public int getValor() {
+	public double getValor() {
 		return valor;
 	}
 	
-	public void setValor(int valor) {
-		this.valor = valor;
+	public void setValor(double probs) {
+		this.valor = probs;
 	}
 
 	public char getC() {
@@ -38,6 +40,22 @@ public class HuffmanNode {
 
 	public void setRight(HuffmanNode right) {
 		this.right = right;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public int getLongitudCode() {
+		return longitudCode;
+	}
+
+	public void setLongitudCode(int longitudCode) {
+		this.longitudCode = longitudCode;
 	}
 
 }
