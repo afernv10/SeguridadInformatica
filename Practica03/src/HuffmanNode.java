@@ -4,7 +4,7 @@ package src;
 public class HuffmanNode {
 	
 	private double valor;
-	private char c;
+	private String c;
 	private String code;
 	private int longitudCode;
 	
@@ -19,11 +19,11 @@ public class HuffmanNode {
 		this.valor = probs;
 	}
 
-	public char getC() {
+	public String getC() {
 		return c;
 	}
 
-	public void setC(char c) {
+	public void setC(String c) {
 		this.c = c;
 	}
 	

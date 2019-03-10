@@ -24,8 +24,8 @@ public class HuffmanBinario {
 		 * Practica 3
 		 */
 		double[] probs = {83, 69, 67, 82, 69, 84, 79, 32, 68, 69, 32, 85, 78, 79, 32, 83, 69, 67, 82, 69, 84, 79, 32, 83, 69, 71, 85, 82, 79};
-		char[] charArray = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'X', 'Y', 'Z'  };
-		
+		String[] charArray = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "X", "Y", "Z"  };
+		int fuente = 1;
 		
 		// Priority queue
         PriorityQueue<HuffmanNode> q = new PriorityQueue<HuffmanNode>(probs.length, new ComparadorProbs()); 
@@ -60,7 +60,7 @@ public class HuffmanBinario {
 
 			//Realizamos la suma de las frecuancias de los nodos padre
 			hijo.setValor(padre1.getValor() + padre2.getValor());
-			hijo.setC('-');
+			hijo.setC("-");
 			//System.out.println("Hijo: valor: " +hijo.getC() + "[" +  hijo.getValor() + "]");
 
 			// first extracted node as left child.
@@ -86,24 +86,42 @@ public class HuffmanBinario {
 		
 		double longMedia = calcularLongitudMedia(valorTotal);
 		
+		double entropia = calcularEntropia(root.getValor());
+		
+		double eficacia = calcularEficacia(entropia, longMedia, fuente);
+		
 		System.out.println("\nValor total: " + root.getValor());
-		
 		System.out.println("\nLongitud media: " + String.format("%.4f", longMedia));
-		
-		//System.out.println("\nEntropía: " + calcularEntropia());
+		System.out.println("\nEntropía: " + String.format("%.5f", entropia));
+		System.out.println("\nEficacia con fuente " + fuente + ": " + String.format("%.5f", eficacia));
 	}
 	
-	private double calcularEntropia() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
 	private static double calcularLongitudMedia(double valorTotal) {
 		double ret = 0;
 		for (HuffmanNode huffmanNode : listaNodos) {
 			ret+= huffmanNode.getValor()*huffmanNode.getLongitudCode();
 		}
 		return ret/valorTotal;
+	}
+	
+	private static double calcularEntropia(double sumaProbs) {
+		double ret = 0;
+		// Fórmula: prob/sumaprob
+		for (HuffmanNode huffmanNode : listaNodos) {
+			
+			ret+= (huffmanNode.getValor()/sumaProbs) * log2((sumaProbs/huffmanNode.getValor()));
+		}
+		return ret;
+	}
+	
+	private static double log2(double d) {
+		double r = Math.log(d)/Math.log(2);
+		System.out.println(r);
+		return r;
+	}
+	
+	private static double calcularEficacia(double entropia, double longMedia, int fuente) {
+		return (fuente*entropia)/longMedia;
 	}
 
 	// recursive function to print the 
@@ -116,7 +134,7 @@ public class HuffmanBinario {
     	//Este es es caso base en el que el valor es 1.0 y el valor de la posicion es el por defect --> "-"
     	// y ademas no tiene ramas derecha ni izquierda.
     	// El parametro "s" es generado a traves de arbol
-        if (root.getLeft() == null && root.getRight() == null && Character.isLetter(root.getC())) { 
+        if (root.getLeft() == null && root.getRight() == null && checkIsLetter(root.getC())) { 
    
             root.setCode(s);
             root.setLongitudCode(s.length());
@@ -131,7 +149,23 @@ public class HuffmanBinario {
   
         printCode(root.getLeft(), s + "1"); 
         printCode(root.getRight(), s + "0");  
-    } 
+    }
+
+	private static boolean checkIsLetter(String c) {
+		if (c == null) { // checks if the String is null
+			return false;
+		}
+
+		int len = c.length();
+		for(int i = 0;i<len;i++) {
+		// checks whether the character is neither a letter nor a digit
+		// if it is neither a letter nor a digit then it will return false
+			if ((Character.isLetterOrDigit(c.charAt(i)) == false)) {
+				return false;
+			}
+		}
+		return true;
+	}
 
 }
 
