@@ -75,11 +75,11 @@ public class HuffmanBinario {
 		while (q.size() > 1) {
 
 			HuffmanNode padre1 = q.poll();
-			//System.out.print("padre: "+padre1.getC() + "[" +  padre1.getValor() + "]");
+			System.out.print("padre: "+padre1.getC() + "[" +  padre1.getValor() + "]");
 		
 			// second min extarct.
 			HuffmanNode padre2 = q.poll();
-			//System.out.println(" padre: "+padre2.getC() + "[" +  padre2.getValor() + "]");
+			System.out.println(" padre: "+padre2.getC() + "[" +  padre2.getValor() + "]");
 			
 			// creamos el hijp
 			HuffmanNode hijo = new HuffmanNode();
@@ -87,7 +87,7 @@ public class HuffmanBinario {
 			//Realizamos la suma de las frecuancias de los nodos padre
 			hijo.setValor(padre1.getValor() + padre2.getValor());
 			hijo.setC('*');
-			//System.out.println("Hijo: valor: " +hijo.getC() + "[" +  hijo.getValor() + "]");
+			System.out.println("Hijo: valor: " +hijo.getC() + "[" +  hijo.getValor() + "]\n");
 
 			// first extracted node as left child.
 			hijo.setLeft(padre1);
@@ -96,8 +96,9 @@ public class HuffmanBinario {
 			hijo.setRight(padre2);
 
 			// Marcamos al nodo resultante como la nueva root
+			
 			root = hijo;
-
+			
 			// añadimos el nodo hijo a la cola de prioridad
 			q.add(hijo);
 
@@ -115,6 +116,7 @@ public class HuffmanBinario {
 	}
 	
 	private static double calcularLongitudMedia(double valorTotal) {
+		
 		double ret = 0;
 		for (HuffmanNode huffmanNode : listaNodos) {
 			ret+= huffmanNode.getValor()*huffmanNode.getLongitudCode();
@@ -133,7 +135,7 @@ public class HuffmanBinario {
     	
 	    		
 	    	
-	        if (root != null && root.getLeft() == null && root.getRight() == null && Character.isLetter(root.getC())) { 
+	        if (root.getLeft() == null && root.getRight() == null && Character.isLetter(root.getC())) { 
 	   
 	            root.setCode(s);
 	            root.setLongitudCode(s.length());
@@ -146,6 +148,7 @@ public class HuffmanBinario {
 	        // Si vamos a la izquierda ponemos un 1 a la s 
 	        // Si vamos a la derecha ponemos un 0 a la s  
 	  
+	        
 	        printCode(root.getLeft(), s + "1"); 
 	        printCode(root.getRight(), s + "0");  
 	   
