@@ -4,28 +4,32 @@ import java.util.Comparator;
 
 public class Practica {
 
-	private static String texto = "La noche cae, brumosa ya y morada. "
+	/*private  String texto = "La noche cae, brumosa ya y morada. "
 			+ "Vagas claridades malvas y verdes perduran tras la torre de la iglesia. "
 			+ "El camino sube, lleno de sombras, de campanillas, de fragancia de hierba, "
-			+ "de canciones, de cansancio y de anhelo.";
+			+ "de canciones, de cansancio y de anhelo.";*/
+	private String texto;
 
-	private static ArrayList<Letra> letras = new ArrayList<Letra>();
+	private ArrayList<Letra> letras = new ArrayList<Letra>();
 
-	public static void main(String[] args) {
-
+	public Practica(String texto){
+		this.texto = texto;
+		iniciar();
+	}
+	
+	public void iniciar(){
 		llenar();
 		calcularProbabilidad();
 		// ordenar();
 		ArrayList<Letra> ordenada = new ArrayList<Letra>();
 
-		imprimir();
+		//imprimir();
 		Collections.sort(letras, new ComparadorNombre());
 		System.out.println();
-		imprimir();
-
+		//imprimir();
 	}
 
-	private static void calcularProbabilidad() {
+	private void calcularProbabilidad() {
 
 		int suma_total = 0;
 
@@ -44,7 +48,7 @@ public class Practica {
 		}
 	}
 
-	public static void llenar() {
+	public void llenar() {
 
 		for (int i = 0; i < texto.length(); i++) {
 
@@ -62,7 +66,7 @@ public class Practica {
 		}
 	}
 
-	public static boolean esNuevo(char letra) {
+	public boolean esNuevo(char letra) {
 
 		for (Letra l : letras) {
 			// System.out.println("l["+l.getLetra()+"] letra["+letra+"]");
@@ -75,7 +79,7 @@ public class Practica {
 		return true;
 	}
 
-	public static void imprimir() {
+	public void imprimir() {
 		for (Letra l : letras) {
 			if (l.getLetra() == ' ') {
 				l.setLetra('-');
@@ -84,6 +88,21 @@ public class Practica {
 					+ String.format("%.3f", l.getProbabilidad()) + "]");
 		}
 	}
+	public void setTexto(String texto){
+		this.texto = texto;
+	}
+	
+	public ArrayList<Letra> getLetras(){
+		return this.letras;
+	}
+	
+	/*public static void main(String[] args) {
+
+		Practica practica = new Practica();
+		practica.iniciar();
+		
+
+	}*/
 
 }
 

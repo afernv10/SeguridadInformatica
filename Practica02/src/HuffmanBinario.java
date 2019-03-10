@@ -16,13 +16,44 @@ public class HuffmanBinario {
 		/**
 		 * Ejercicio 2
 		 */
-		double[] probs = {27, 16, 4, 56, 22, 2, 78, 45, 36, 13, 12, 7};
-		char[] charArray = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l' };
+		//double[] probs = {27, 16, 4, 56, 22, 2, 78, 45, 36, 13, 12, 7};
+		//char[] charArray = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l' };
 		
+		/**
+		 * Ejercicio 3
+		 */
+		
+		
+		String texto = "Existe una cosa muy misteriosa, pero muy cotidiana."
+				+ " Todo el mundo participa de ella, todo el mundo la conoce, pero muy pocos se paran a pensar en ella."
+				+ " Casi todos se limitan a tomarla como viene, sin hacer preguntas."
+				+ "Esta cosa es el tiempo.";
+		
+		Practica practica2 = new Practica(texto);
+		
+		ArrayList<Letra> letras = new ArrayList<Letra>();
+		
+		letras = practica2.getLetras();
+		
+		
+		double[] probs = new double[letras.size()];
+		char[] charArray = new char[letras.size()];
+		
+		int j = 0;
+		for(Letra l : letras){
+			if (l.getLetra() == ' ') {
+				l.setLetra('-');
+			}
+			 probs[j] = l.getProbabilidad()*100;
+			 charArray[j] = l.getLetra();
+			 System.out.println(charArray[j]+" --> "+probs[j]);
+			 j++;
+		}
 		
 		
 		// Priority queue
         PriorityQueue<HuffmanNode> q = new PriorityQueue<HuffmanNode>(probs.length, new ComparadorProbs()); 
+        
         for (int i = 0; i < probs.length; i++) { 
   
         	//Creamos el nodo con sus hijos a null, tambien inicializamos su posicion y valores.
@@ -36,6 +67,7 @@ public class HuffmanBinario {
   
             //Añadimos el nodo a la cola
             q.add(hn); 
+            
         }
 		//Creamos la raiz del arbol
         HuffmanNode root = null;
@@ -54,7 +86,7 @@ public class HuffmanBinario {
 
 			//Realizamos la suma de las frecuancias de los nodos padre
 			hijo.setValor(padre1.getValor() + padre2.getValor());
-			hijo.setC('-');
+			hijo.setC('*');
 			//System.out.println("Hijo: valor: " +hijo.getC() + "[" +  hijo.getValor() + "]");
 
 			// first extracted node as left child.
@@ -71,9 +103,7 @@ public class HuffmanBinario {
 
 		}
 		
-		//System.out.println("la raiz es:"+ root.getPosicion()+" {"+root.getValor()+"}");
 		
-		//System.out.println("iddd"+root.getLeft().getRight().getC());
 		printCode(root, "");
 		
 		double valorTotal = root.getValor();
@@ -95,29 +125,31 @@ public class HuffmanBinario {
 	// recursive function to print the 
     // huffman-code through the tree traversal. 
     // Here s is the huffman - code generated. 
-    public static void printCode(HuffmanNode root, String s) 
-    { 
+    public static void printCode(HuffmanNode root, String s){ 
   
-     
     	//Este es es caso base en el que el valor es 1.0 y el valor de la posicion es el por defect --> "-"
     	// y ademas no tiene ramas derecha ni izquierda.
     	// El parametro "s" es generado a traves de arbol
-        if (root.getLeft() == null && root.getRight() == null && Character.isLetter(root.getC())) { 
-   
-            root.setCode(s);
-            root.setLongitudCode(s.length());
-            listaNodos.add(root);
-            System.out.println(root.getC() + ":" + root.getCode() + " l[" + root.getLongitudCode() + "]");
-            
-            return; 
-        } 
-  
-        // Si vamos a la izquierda ponemos un 1 a la s 
-        // Si vamos a la derecha ponemos un 0 a la s  
-  
-        printCode(root.getLeft(), s + "1"); 
-        printCode(root.getRight(), s + "0");  
-    } 
+    	
+	    		
+	    	
+	        if (root != null && root.getLeft() == null && root.getRight() == null && Character.isLetter(root.getC())) { 
+	   
+	            root.setCode(s);
+	            root.setLongitudCode(s.length());
+	            listaNodos.add(root);
+	            System.out.println(root.getC() + ":" + root.getCode() + " l[" + root.getLongitudCode() + "]");
+	            
+	            return; 
+	        } 
+	  
+	        // Si vamos a la izquierda ponemos un 1 a la s 
+	        // Si vamos a la derecha ponemos un 0 a la s  
+	  
+	        printCode(root.getLeft(), s + "1"); 
+	        printCode(root.getRight(), s + "0");  
+	   
+    }
 
 }
 
