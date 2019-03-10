@@ -6,6 +6,8 @@ import java.util.PriorityQueue;
 public class HuffmanBinario {
 
 	static ArrayList<HuffmanNode> listaNodos = new ArrayList<HuffmanNode>();
+	static ArrayList<HuffmanNode> listaInicial = new ArrayList<HuffmanNode>();
+	static HuffmanNode root;
 	
 	public static void main(String[] args) {
 		/**
@@ -25,10 +27,10 @@ public class HuffmanBinario {
 		 */
 		double[] probs = {83, 69, 67, 82, 69, 84, 79, 32, 68, 69, 32, 85, 78, 79, 32, 83, 69, 67, 82, 69, 84, 79, 32, 83, 69, 71, 85, 82, 79};
 		String[] charArray = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "X", "Y", "Z"  };
-		int fuente = 1;
+		int fuente = 2;
 		
 		// Priority queue
-        PriorityQueue<HuffmanNode> q = new PriorityQueue<HuffmanNode>(probs.length, new ComparadorProbs()); 
+        /*PriorityQueue<HuffmanNode> q = new PriorityQueue<HuffmanNode>(probs.length, new ComparadorProbs()); 
         for (int i = 0; i < probs.length; i++) { 
   
         	//Creamos el nodo con sus hijos a null, tambien inicializamos su posicion y valores.
@@ -42,20 +44,94 @@ public class HuffmanBinario {
   
             //Añadimos el nodo a la cola
             q.add(hn); 
+        }*/
+        
+        crearListaSegunFuente(fuente, probs, charArray);
+		
+        PriorityQueue<HuffmanNode> q = crearPriorityQueue(listaInicial.size());
+        
+        crearArbol(q);
+		
+		printCode(root, "");
+		
+		double valorTotal = root.getValor();
+		
+		double longMedia = calcularLongitudMedia(valorTotal);
+		
+		double entropia = calcularEntropia(root.getValor());
+		
+		double eficacia = calcularEficacia(entropia, longMedia, fuente);
+		
+		System.out.println("\nValor total: " + root.getValor());
+		System.out.println("\nLongitud media: " + String.format("%.4f", longMedia));
+		System.out.println("\nEntropía: " + String.format("%.5f", entropia));
+		System.out.println("\nEficacia con fuente " + fuente + ": " + String.format("%.5f", eficacia));
+	}
+	
+	
+
+	private static PriorityQueue<HuffmanNode> crearPriorityQueue(int numeroDeValores) {
+		PriorityQueue<HuffmanNode> ret = new PriorityQueue<HuffmanNode>(numeroDeValores, new ComparadorProbs()); 
+        for (int i = 0; i < numeroDeValores; i++) { 
+   
+           //Añadimos el nodo a la cola
+            ret.add(listaInicial.get(i)); 
         }
-		//Creamos la raiz del arbol
-        HuffmanNode root = null;
-       
+        return ret;
+	}
+
+
+
+	private static void crearListaSegunFuente(int fuente, double[] probs, String[] charArray) {
+
+		String charAcum = "";
+		double valorAcum = 0;
+
+		for (int i = 0; i < charArray.length; i++) {
+			if (fuente == 1) {
+
+				HuffmanNode hn = new HuffmanNode();
+				hn.setC(charArray[i]);
+				hn.setLeft(null);
+				hn.setRight(null);
+				hn.setValor(probs[i]);
+
+				listaInicial.add(hn);
+			} else {
+				charAcum = charArray[i];
+				valorAcum = probs[i];
+
+				for (int nFuente = 1; nFuente < fuente; nFuente++) {
+					// dependiendo de qué fuente extendida sea iteramos tantas veces
+
+					for (int j = 0; j < charArray.length; j++) {
+						HuffmanNode hn = new HuffmanNode();
+						hn.setC((charAcum + charArray[j]));
+						hn.setLeft(null);
+						hn.setRight(null);
+						hn.setValor((valorAcum * probs[j]));
+
+						listaInicial.add(hn);
+					}
+				}
+			}
+
+		}
+	}
+
+	private static void crearArbol(PriorityQueue<HuffmanNode> q) {
+		root = null;
+		
 		while (q.size() > 1) {
 
 			HuffmanNode padre1 = q.poll();
 			//System.out.print("padre: "+padre1.getC() + "[" +  padre1.getValor() + "]");
 		
-			// second min extarct.
+			// second min extract.
 			HuffmanNode padre2 = q.poll();
 			//System.out.println(" padre: "+padre2.getC() + "[" +  padre2.getValor() + "]");
 			
-			// creamos el hijp
+			// creamos el hijo
 			HuffmanNode hijo = new HuffmanNode();
 
 			//Realizamos la suma de las frecuancias de los nodos padre
@@ -76,29 +152,11 @@ public class HuffmanBinario {
 			q.add(hijo);
 
 		}
-		
-		//System.out.println("la raiz es:"+ root.getPosicion()+" {"+root.getValor()+"}");
-		
-		//System.out.println("iddd"+root.getLeft().getRight().getC());
-		printCode(root, "");
-		
-		double valorTotal = root.getValor();
-		
-		double longMedia = calcularLongitudMedia(valorTotal);
-		
-		double entropia = calcularEntropia(root.getValor());
-		
-		double eficacia = calcularEficacia(entropia, longMedia, fuente);
-		
-		System.out.println("\nValor total: " + root.getValor());
-		System.out.println("\nLongitud media: " + String.format("%.4f", longMedia));
-		System.out.println("\nEntropía: " + String.format("%.5f", entropia));
-		System.out.println("\nEficacia con fuente " + fuente + ": " + String.format("%.5f", eficacia));
 	}
-	
+
 	private static double calcularLongitudMedia(double valorTotal) {
 		double ret = 0;
-		for (HuffmanNode huffmanNode : listaNodos) {
+		for (HuffmanNode huffmanNode : listaInicial) {
 			ret+= huffmanNode.getValor()*huffmanNode.getLongitudCode();
 		}
 		return ret/valorTotal;
@@ -107,7 +165,7 @@ public class HuffmanBinario {
 	private static double calcularEntropia(double sumaProbs) {
 		double ret = 0;
 		// Fórmula: prob/sumaprob
-		for (HuffmanNode huffmanNode : listaNodos) {
+		for (HuffmanNode huffmanNode : listaInicial) {
 			
 			ret+= (huffmanNode.getValor()/sumaProbs) * log2((sumaProbs/huffmanNode.getValor()));
 		}
@@ -116,19 +174,17 @@ public class HuffmanBinario {
 	
 	private static double log2(double d) {
 		double r = Math.log(d)/Math.log(2);
-		System.out.println(r);
 		return r;
 	}
 	
 	private static double calcularEficacia(double entropia, double longMedia, int fuente) {
-		return (fuente*entropia)/longMedia;
+		return (entropia)/longMedia;
 	}
 
 	// recursive function to print the 
     // huffman-code through the tree traversal. 
     // Here s is the huffman - code generated. 
-    public static void printCode(HuffmanNode root, String s) 
-    { 
+    public static void printCode(HuffmanNode root, String s) { 
   
      
     	//Este es es caso base en el que el valor es 1.0 y el valor de la posicion es el por defect --> "-"
@@ -138,7 +194,7 @@ public class HuffmanBinario {
    
             root.setCode(s);
             root.setLongitudCode(s.length());
-            listaNodos.add(root);
+            //listaNodos.add(root);	// No es necesario ahora ya
             System.out.println(root.getC() + ":" + root.getCode() + " l[" + root.getLongitudCode() + "]");
             
             return; 
