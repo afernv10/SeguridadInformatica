@@ -24,19 +24,21 @@ public class HuffmanBinario {
 		 */
 		
 		
-		String texto = "Existe una cosa muy misteriosa, pero muy cotidiana."
-				+ " Todo el mundo participa de ella, todo el mundo la conoce, pero muy pocos se paran a pensar en ella."
+		/*String texto = "Existe una cosa muy misteriosa, pero muy cotidiana. Todo el mundo participa de ella, todo el mundo la conoce, pero muy pocos se paran a pensar en ella,"
 				+ " Casi todos se limitan a tomarla como viene, sin hacer preguntas."
-				+ "Esta cosa es el tiempo.";
+				+ " Esta cosa es el tiempo.";
+		*/
+		String texto ="Existe una cosa muy misteriosa, pero muy cotidiana. Todo el mundo participa de ella, todo el mundo la conoce, pero muy pocos se paran a pensar en ella. Casi todos se limitan a tomarla como viene, sin hacer preguntas. Esta cosa es el tiempo.";
+		
 		
 		Practica practica2 = new Practica(texto);
 		
 		ArrayList<Letra> letras = new ArrayList<Letra>();
 		
 		letras = practica2.getLetras();
+		System.out.println(letras.size());
 		
-		
-		double[] probs = new double[letras.size()];
+		int[] probs = new int[letras.size()];
 		char[] charArray = new char[letras.size()];
 		
 		int j = 0;
@@ -44,7 +46,7 @@ public class HuffmanBinario {
 			if (l.getLetra() == ' ') {
 				l.setLetra('-');
 			}
-			 probs[j] = l.getProbabilidad()*100;
+			 probs[j] = l.getFrecuencia();
 			 charArray[j] = l.getLetra();
 			 System.out.println(charArray[j]+" --> "+probs[j]);
 			 j++;
@@ -53,18 +55,20 @@ public class HuffmanBinario {
 		
 		// Priority queue
         PriorityQueue<HuffmanNode> q = new PriorityQueue<HuffmanNode>(probs.length, new ComparadorProbs()); 
+        HuffmanNode hn = null;
         
         for (int i = 0; i < probs.length; i++) { 
   
         	//Creamos el nodo con sus hijos a null, tambien inicializamos su posicion y valores.
-            HuffmanNode hn = new HuffmanNode(); 
+            hn = new HuffmanNode(); 
   
             hn.setC(charArray[i]); 
             hn.setValor(probs[i]); 
   
             hn.setLeft(null);
             hn.setRight(null); 
-  
+            
+            
             //Añadimos el nodo a la cola
             q.add(hn); 
             
@@ -73,10 +77,12 @@ public class HuffmanBinario {
         HuffmanNode root = null;
        
 		while (q.size() > 1) {
-
+			
+			
 			HuffmanNode padre1 = q.poll();
 			System.out.print("padre: "+padre1.getC() + "[" +  padre1.getValor() + "]");
-		
+			
+			
 			// second min extarct.
 			HuffmanNode padre2 = q.poll();
 			System.out.println(" padre: "+padre2.getC() + "[" +  padre2.getValor() + "]");
@@ -98,6 +104,8 @@ public class HuffmanBinario {
 			// Marcamos al nodo resultante como la nueva root
 			
 			root = hijo;
+			
+			
 			
 			// añadimos el nodo hijo a la cola de prioridad
 			q.add(hijo);
@@ -133,41 +141,33 @@ public class HuffmanBinario {
     	// y ademas no tiene ramas derecha ni izquierda.
     	// El parametro "s" es generado a traves de arbol
     	
-	    		
 	    	
-	        if (root.getLeft() == null && root.getRight() == null && Character.isLetter(root.getC())) { 
-	   
-	            root.setCode(s);
-	            root.setLongitudCode(s.length());
-	            listaNodos.add(root);
-	            System.out.println(root.getC() + ":" + root.getCode() + " l[" + root.getLongitudCode() + "]");
-	            
-	            return; 
-	        } 
-	  
-	        // Si vamos a la izquierda ponemos un 1 a la s 
-	        // Si vamos a la derecha ponemos un 0 a la s  
-	  
-	        
-	        printCode(root.getLeft(), s + "1"); 
-	        printCode(root.getRight(), s + "0");  
-	   
+        if (root.getLeft() == null && root.getRight() == null && (Character.isLetter(root.getC()) || root.getC() != '*')) { 
+   
+            root.setCode(s);
+            root.setLongitudCode(s.length());
+            listaNodos.add(root);
+            System.out.println(root.getC() + ":" + root.getCode() + " l[" + root.getLongitudCode() + "]");
+            
+            return; 
+        } 
+        // Si vamos a la izquierda ponemos un 1 a la s 
+        // Si vamos a la derecha ponemos un 0 a la s  
+	    printCode(root.getLeft(), s + "1"); 
+	    printCode(root.getRight(), s + "0");      
     }
-
 }
 
 class ComparadorProbs implements Comparator<HuffmanNode> {
 
 	@Override
 	public int compare(HuffmanNode o1, HuffmanNode o2) {
-		// TODO Auto-generated method stub
 		
 		if (o1.getValor() < o2.getValor()) return -1;
         if (o1.getValor() > o2.getValor()) return 1;
-        //if(Math.abs(o1.getValor()-o2.getValor()) < ERR) return 0;
         return 0;
 		
-		//return Double.compare(o1.getValor(), o2.getValor());
+		
 	}
 
 }
