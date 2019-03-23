@@ -27,7 +27,7 @@ public class HuffmanBinario {
 		 */
 		double[] probs = {83, 69, 67, 82, 69, 84, 79, 32, 68, 69, 32, 85, 78, 79, 32, 83, 69, 67, 82, 69, 84, 79, 32, 83, 69, 71, 85, 82, 79};
 		String[] charArray = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "X", "Y", "Z"  };
-		int fuente = 2;
+		int fuente = 4;
 		
 		// Priority queue
         /*PriorityQueue<HuffmanNode> q = new PriorityQueue<HuffmanNode>(probs.length, new ComparadorProbs()); 
@@ -47,13 +47,15 @@ public class HuffmanBinario {
         }*/
         
         crearListaSegunFuente(fuente, probs, charArray);
+		System.out.println("Tam "+listaInicial.size());
+		
 		
         PriorityQueue<HuffmanNode> q = crearPriorityQueue(listaInicial.size());
         
         crearArbol(q);
 		
 		printCode(root, "");
-		
+		System.out.println("root.getvalor: "+root.getValor());
 		double valorTotal = root.getValor();
 		
 		double longMedia = calcularLongitudMedia(valorTotal);
@@ -71,59 +73,95 @@ public class HuffmanBinario {
 	
 
 	private static PriorityQueue<HuffmanNode> crearPriorityQueue(int numeroDeValores) {
+		
 		PriorityQueue<HuffmanNode> ret = new PriorityQueue<HuffmanNode>(numeroDeValores, new ComparadorProbs()); 
         for (int i = 0; i < numeroDeValores; i++) { 
    
            //Añadimos el nodo a la cola
             ret.add(listaInicial.get(i)); 
+           // System.out.println("ñoño --> "+listaInicial.get(i).getC());
         }
         return ret;
+	}
+
+	private static void perm1(String[] elem, String act, int n, int r, double[] probs) {
+        
+		if (n == 0) {
+        	
+        	//System.out.println(act);
+            HuffmanNode hn = new HuffmanNode();
+			hn.setC(act);
+			hn.setLeft(null);
+			hn.setRight(null);
+			int frecuencia = calcularFrecuenciaForm(act, probs, elem);
+			hn.setValor(frecuencia);
+
+			listaInicial.add(hn);
+            
+            
+            
+            
+        } else {
+            for (int i = 0; i < r; i++) {
+                perm1(elem, act + elem[i] + "", n - 1, r, probs);
+            }
+        }
+    }
+
+	private static int calcularFrecuenciaForm(String act, double[] probs, String[] elem) {
+		
+		
+		String[] array = act.split(""); // cogemos cada letra por separado
+		int retorno = 1;
+		//System.out.println("array lenght: "+array.length);
+		//System.out.println("act lenght: "+act.length());
+		for(int i = 0; i<array.length;i++) {
+			
+			String letra = array[i];
+			for(int j=0; j<probs.length;j++) {
+				//System.out.println("elem "+elem[j]+" a letra"+letra+"");
+				if(letra.equals(elem[j])) {
+					System.out.println();
+					retorno *= probs[j];
+				}
+			}
+		}
+		//System.out.println("el retorno de la frecuencia es: "+retorno);
+		return retorno;
 	}
 
 
 
 	private static void crearListaSegunFuente(int fuente, double[] probs, String[] charArray) {
 
-		String charAcum = "";
-		double valorAcum = 0;
-
-		for (int i = 0; i < charArray.length; i++) {
-			if (fuente == 1) {
-
-				HuffmanNode hn = new HuffmanNode();
-				hn.setC(charArray[i]);
-				hn.setLeft(null);
-				hn.setRight(null);
-				hn.setValor(probs[i]);
-
-				listaInicial.add(hn);
-			} else {
-				charAcum = charArray[i];
-				valorAcum = probs[i];
-
-				for (int nFuente = 1; nFuente < fuente; nFuente++) {
-					// dependiendo de qué fuente extendida sea iteramos tantas veces
-
-					for (int j = 0; j < charArray.length; j++) {
-						HuffmanNode hn = new HuffmanNode();
-						hn.setC((charAcum + charArray[j]));
-						hn.setLeft(null);
-						hn.setRight(null);
-						hn.setValor((valorAcum * probs[j]));
-
-						listaInicial.add(hn);
-					}
-				}
+		
+		if (fuente == 1) {
+			for (int i = 0; i < charArray.length; i++) {
+				
+					System.out.println("probs i"+probs[i]);
+					HuffmanNode hn = new HuffmanNode();
+					hn.setC(charArray[i]);
+					hn.setLeft(null);
+					hn.setRight(null);
+					hn.setValor(probs[i]);
+					//System.out.println("Valor: "+hn.getValor());
+					listaInicial.add(hn);
 			}
-
+		
+		} else { // la fuente es mayor a 1
+			
+			perm1(charArray, "", fuente, charArray.length, probs);
 		}
 	}
 
 	private static void crearArbol(PriorityQueue<HuffmanNode> q) {
-		root = null;
 		
+		root = null;
+		int i = 0;
 		while (q.size() > 1) {
-
+			//System.out.println("la i es: "+i);
+			
+			i++;
 			HuffmanNode padre1 = q.poll();
 			//System.out.print("padre: "+padre1.getC() + "[" +  padre1.getValor() + "]");
 		
@@ -154,6 +192,10 @@ public class HuffmanBinario {
 		}
 	}
 
+	
+	
+	
+	
 	private static double calcularLongitudMedia(double valorTotal) {
 		double ret = 0;
 		for (HuffmanNode huffmanNode : listaInicial) {
@@ -196,7 +238,7 @@ public class HuffmanBinario {
             root.setLongitudCode(s.length());
             //listaNodos.add(root);	// No es necesario ahora ya
             System.out.println(root.getC() + ":" + root.getCode() + " l[" + root.getLongitudCode() + "]");
-            
+           // System.out.println(root.getValor());
             return; 
         } 
   
