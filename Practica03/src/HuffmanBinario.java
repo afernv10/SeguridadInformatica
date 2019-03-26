@@ -25,8 +25,15 @@ public class HuffmanBinario {
 		/**
 		 * Practica 3
 		 */
-		double[] probs = {83, 69, 67, 82, 69, 84, 79, 32, 68, 69, 32, 85, 78, 79, 32, 83, 69, 67, 82, 69, 84, 79, 32, 83, 69, 71, 85, 82, 79};
+		/*double[] probs = {83, 69, 67, 82, 69, 84, 79, 32, 68, 69, 32, 85, 78, 79, 32, 83, 69, 67, 82, 69, 84, 79, 32, 83, 69, 71, 85, 82, 79};
 		String[] charArray = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "X", "Y", "Z"  };
+		int fuente = 4;*/
+		
+		/**
+		 * Ejercicio para probar mayor fuente
+		 */
+		double[] probs = {2, 7, 3};
+		String[] charArray = { "a", "b", "c"};
 		int fuente = 4;
 		
 		// Priority queue
@@ -97,9 +104,6 @@ public class HuffmanBinario {
 			hn.setValor(frecuencia);
 
 			listaInicial.add(hn);
-            
-            
-            
             
         } else {
             for (int i = 0; i < r; i++) {
@@ -191,10 +195,6 @@ public class HuffmanBinario {
 
 		}
 	}
-
-	
-	
-	
 	
 	private static double calcularLongitudMedia(double valorTotal) {
 		double ret = 0;
