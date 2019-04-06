@@ -1,3 +1,4 @@
+
 package practica05;
 
 
@@ -141,16 +142,23 @@ public class Hamming {
 		int l = 15;
 		
 		int[][] array = new int[(l*14)/2][l];
-		array[0][0]=1;
-		array[0][1]=1;
 		
-		for(int i = 0; i < l; i++){
+		int contador_unos = 1; 
+		
+	
+		
+		for (int i = 0; i < l-1; i++) {
 			
-			for(int j = i+1; j < l; j++){
-				
+			array[i][0] = 1;
+			
+			for(int j = i+1; j < l && contador_unos <2; j++){
+					
 				array[i][j] = 1;
+				++contador_unos;
+				
 				
 			}
+			contador_unos = 1;
 		}
 		imprimeMatriz(array);
 	}
