@@ -1,13 +1,10 @@
-
-package practica05;
-
+package src;
 
 
 public class Hamming {
 
 	
-	String alf ="A�BCDE�FGHI�JKLMN�O�PQRSTU�VWXYZ .,;:()�?�!-0123456789a�bcde�fghi�jklmn�o�pqrstu�vwxyz";
-	
+	String alf ="AÁBCDEÉFGHIÍJKLMNÑOÓPQRSTUÚVWXYZ .,;:()¿?¡!-0123456789aábcdeéfghiíjklmnñoópqrstuúvwxyz";
 	
 	
 	public Hamming() {
@@ -222,7 +219,7 @@ public class Hamming {
 		        }
 		    }
 		    /**
-		     * si no se cumple la condici�n se retorna una matriz vac�a
+		     * si no se cumple la condición se retorna una matriz vacía
 		     */
 		    return c;
 	}
