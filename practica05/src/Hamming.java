@@ -1,12 +1,12 @@
 
-package practica05;
+package src;
 
-
+import javafx.print.PaperSource;
 
 public class Hamming {
 
 	
-	String alf ="A�BCDE�FGHI�JKLMN�O�PQRSTU�VWXYZ .,;:()�?�!-0123456789a�bcde�fghi�jklmn�o�pqrstu�vwxyz";
+	String alf ="AÁBCDEÉFGHIÍJKLMNÑOÓPQRSTUÚVWXYZ .,;:()¿?¡!-0123456789aábcdeéfghiíjklmnñoópqrstuúvwxyz";
 	
 	
 	
@@ -136,40 +136,46 @@ public class Hamming {
 		return errorPatron;
 	}
 	
-	//TODO hay que revisar los ultimos valores de cada secuencia porque se quedan repetidos o con todo 0 excepto el "1 guia"
+	/**
+	 * YA FUNCIONA, ESTE METODO ES EL QUE SACA ERRORES PATRON PESO 2
+	 */
 	private void prueba(){
 		
 		int l = 15;
+		int peso = 2;		
+		int[][] array = new int[(l*(l-1))/peso][l];
 		
-		int[][] array = new int[(l*14)/2][l];
 		
 		int contador_unos = 1; 
 		
-	
+		System.out.println("array0:" + array[0].length);
+		System.out.println("array:" + array.length);
+		
 		int j = 1;
 		int div = 0;
+		int grupoNpalabras = array[0].length, fila=0, movingPos=0;
+		
 		for (int i = 0; i < array.length; i++) {
-			//System.out.println(i);
-			div = i/l;
-			//System.out.println(i/l);
-			array[i][div]=1; //aqui se marca el "1 guia" prueba a quitarlo para ver lo que pasa
+				
+			if(j==grupoNpalabras) {
+				movingPos+=15;
+				j=1;
+				grupoNpalabras--;
+			}
+			div = (movingPos)/l;
+			array[fila][div]=1; //aqui se marca el "1 guia" prueba a quitarlo para ver lo que pasa
 			
 			if(j<=array[0].length) {
 				
 				if(j+div < 15) {//para que se vayan desplazando los unos y dejando ceros a la derecha
-					
+					System.out.println("div i:" + i+" j+div: "+(j+div));
 					array[i][j+div] = 1;
-				}else {
-					//array[i][j-1] = 2; // no sirve
-					
-					if(j==array[0].length) {
-						System.out.println("hola"+j);
-						array[i][j-1] = 1;
-						j = 0;
-					}
 				}
-				++j;
+				
+				j++;
+				fila++;
 			}
+			
 		}
 		imprimeMatriz(array);
 	}
