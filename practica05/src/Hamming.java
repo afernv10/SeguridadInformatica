@@ -1,10 +1,13 @@
-package src;
+
+package practica05;
+
 
 
 public class Hamming {
 
 	
-	String alf ="AÁBCDEÉFGHIÍJKLMNÑOÓPQRSTUÚVWXYZ .,;:()¿?¡!-0123456789aábcdeéfghiíjklmnñoópqrstuúvwxyz";
+	String alf ="A�BCDE�FGHI�JKLMN�O�PQRSTU�VWXYZ .,;:()�?�!-0123456789a�bcde�fghi�jklmn�o�pqrstu�vwxyz";
+	
 	
 	
 	public Hamming() {
@@ -133,7 +136,7 @@ public class Hamming {
 		return errorPatron;
 	}
 	
-	
+	//TODO hay que revisar los ultimos valores de cada secuencia porque se quedan repetidos o con todo 0 excepto el "1 guia"
 	private void prueba(){
 		
 		int l = 15;
@@ -143,19 +146,30 @@ public class Hamming {
 		int contador_unos = 1; 
 		
 	
-		
-		for (int i = 0; i < l-1; i++) {
+		int j = 1;
+		int div = 0;
+		for (int i = 0; i < array.length; i++) {
+			//System.out.println(i);
+			div = i/l;
+			//System.out.println(i/l);
+			array[i][div]=1; //aqui se marca el "1 guia" prueba a quitarlo para ver lo que pasa
 			
-			array[i][0] = 1;
-			
-			for(int j = i+1; j < l && contador_unos <2; j++){
+			if(j<=array[0].length) {
+				
+				if(j+div < 15) {//para que se vayan desplazando los unos y dejando ceros a la derecha
 					
-				array[i][j] = 1;
-				++contador_unos;
-				
-				
+					array[i][j+div] = 1;
+				}else {
+					//array[i][j-1] = 2; // no sirve
+					
+					if(j==array[0].length) {
+						System.out.println("hola"+j);
+						array[i][j-1] = 1;
+						j = 0;
+					}
+				}
+				++j;
 			}
-			contador_unos = 1;
 		}
 		imprimeMatriz(array);
 	}
@@ -219,7 +233,7 @@ public class Hamming {
 		        }
 		    }
 		    /**
-		     * si no se cumple la condición se retorna una matriz vacía
+		     * si no se cumple la condici�n se retorna una matriz vac�a
 		     */
 		    return c;
 	}
@@ -240,7 +254,7 @@ public class Hamming {
 		for (int i=0; i < matriz.length; i++) {
 			  for (int j=0; j < matriz[i].length; j++) {
 				  
-				  System.out.print(matriz[i][j]);
+				  System.out.print(matriz[i][j]+" ");
 			  }
 			  System.out.println();
 		}
