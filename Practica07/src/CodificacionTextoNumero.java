@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CodificacionTextoNumero {
-	String alf = "aábcdeéfghiíjklmnñoópqrstuúvwxyzAÁBCDEÉFGHIÍJKLMNÑOÓPQRSTUÚVWXYZ0123456789 ,.:-()";
+	String alf = "aï¿½bcdeï¿½fghiï¿½jklmnï¿½oï¿½pqrstuï¿½vwxyzAï¿½BCDEï¿½FGHIï¿½JKLMNï¿½Oï¿½PQRSTUï¿½VWXYZ0123456789 ,.:-()";
 			
 	List<BigInteger> listaPosiciones = new ArrayList<BigInteger>();
 	List<BigInteger> listaRestos = new ArrayList<BigInteger>();
@@ -40,7 +40,7 @@ public class CodificacionTextoNumero {
 		
 		for (int i = 0; i < lista.length; i++) {
 			
-			//TODO problema, revisar como hacer esta operacion en bigInteger
+			//TODO problema, revisar como hacer esta operacion en bigInteger, hehe
 			num = num.add(BigInteger.valueOf((long) (lista[i]* (Math.pow(alf.length(), exponente)))));
 			
 			
