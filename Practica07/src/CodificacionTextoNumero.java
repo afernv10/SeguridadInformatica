@@ -88,5 +88,9 @@ public class CodificacionTextoNumero {
 		}
 		
 	}
+	public void limpiar(){
+		listaRestos.clear();
+		listaPosiciones.clear();
+	}
 
 }

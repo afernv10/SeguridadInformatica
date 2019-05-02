@@ -4,7 +4,7 @@ import java.math.BigInteger;
 public class PotenciacionModular {
 
 	public PotenciacionModular() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public BigInteger calculaPotenciacion(BigInteger a, BigInteger b, BigInteger n) {
@@ -21,7 +21,7 @@ public class PotenciacionModular {
 
 		for (int i = 0; i < bBinarioInv.length(); i++) {
 			if (bBinarioInv.charAt(i) == '0') {
-				// El m será igual al m anterior
+				// El m serï¿½ igual al m anterior
 			} else {
 				m = m.multiply(a);
 				m = m.remainder(n);
@@ -33,6 +33,14 @@ public class PotenciacionModular {
 		return m;
 	}
 
+	
+	public BigInteger obtenerExponente(BigInteger num, int g){
+		
+		
+		
+		return null;
+	}
+	
 	public String calculaBinario(BigInteger numeroDecimal) {
 		
 		BigInteger temp = numeroDecimal;
