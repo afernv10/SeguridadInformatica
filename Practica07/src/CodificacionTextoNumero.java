@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CodificacionTextoNumero {
-	String alf = "a�bcde�fghi�jklmn�o�pqrstu�vwxyzA�BCDE�FGHI�JKLMN�O�PQRSTU�VWXYZ0123456789 ,.:-()";
+	String alf="aábcdeéfghiíjklmnñoópqrstuúvwxyzAÁBCDEÉFGHIÍJKLMNÑOÓPQRSTUÚVWXYZ0123456789 ,.:-()";
 			
 	List<BigInteger> listaPosiciones = new ArrayList<BigInteger>();
 	List<BigInteger> listaRestos = new ArrayList<BigInteger>();
@@ -24,7 +24,6 @@ public class CodificacionTextoNumero {
 		for (int i = 0; i < texto.length(); i++) {
 			
 			lista[i] = listaPosiciones.get(i).intValue();
-			System.out.println(lista[i]);
 		}
 		
 		return listaNumero(lista);
@@ -34,20 +33,13 @@ public class CodificacionTextoNumero {
 	public BigInteger listaNumero(int[] lista) {
 		
 		int exponente = lista.length-1;
-		System.out.println("exp: "+exponente);
-		long res = 0;
 		BigInteger num = BigInteger.ZERO;
 		
 		for (int i = 0; i < lista.length; i++) {
-			
-			//TODO problema, revisar como hacer esta operacion en bigInteger, hehe
-			num = num.add(BigInteger.valueOf((long) (lista[i]* (Math.pow(alf.length(), exponente)))));
-			
-			
-			System.out.println("res: "+num);
+			// OJO tiene que estar todo en BigInteger, si no no funciona
+			num = num.add((BigInteger.valueOf(lista[i]).multiply(BigInteger.valueOf(alf.length()).pow(exponente))));
 			exponente--;
 		}
-		//el long se llena demasiado rapido
 		
 		return num;
 

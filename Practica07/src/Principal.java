@@ -11,7 +11,7 @@ public class Principal {
 		/*
 		 * Ejercicio 1 184257551115
 		 */
-		/*System.out.println("POTENCIACIÓN MODULAR");
+		/*System.out.println("POTENCIACIÃ“N MODULAR");
 		Scanner sc = new Scanner(System.in);
 
 		System.out.println("Introduzca la base: ");
@@ -20,7 +20,7 @@ public class Principal {
 		System.out.println("Introduzca el exponente: ");
 		BigInteger b = sc.nextBigInteger();
 
-		System.out.println("Introduzca el módulo: ");
+		System.out.println("Introduzca el mÃ³dulo: ");
 		BigInteger n = sc.nextBigInteger();
 
 		System.out.println(pm.calculaPotenciacion(a, b, n));*/
@@ -32,7 +32,7 @@ public class Principal {
 		Scanner sc = new Scanner(System.in);
 		
 		// NUMERO A TEXTO (M)
-		/*System.out.println("CODIFICACIÓN Numero/Texto");
+		/*System.out.println("CODIFICACIÃ“N Numero/Texto");
 		System.out.println("Dame el numero: ");
 		BigInteger M = sc.nextBigInteger();
 		System.out.println(cod.decodificacionNumero(M));
@@ -44,11 +44,11 @@ public class Principal {
 		/*int[] lista= {1,50,25,80,56,50,13,53,11};
 		System.out.println(cod.listaNumero(lista));*/
 		
-		// TEXTO A NUMERO éQQBkc34F8
-		System.out.println("CODIFICACIÓN Texto/Numero");
+		// TEXTO A NUMERO ï¿½QQBkc34F8
+		System.out.println("CODIFICACIÃ“N Texto/Numero");
 		System.out.println("Dame el texto: ");
-		//String M = sc.nextLine();
-		System.out.println(cod.decodificacionTexto("30 de abril"));
+		String M = sc.nextLine();
+		System.out.println(cod.decodificacionTexto(M));
 		
 		//System.out.println("Lista: ");
 		
