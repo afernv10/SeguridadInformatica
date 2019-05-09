@@ -19,7 +19,7 @@ public class RSABloques {
 		
 	}
 	public void operar() {
-
+		
 		/*
 		Pepa    
 		n=62439738695706104201747 
@@ -31,7 +31,7 @@ public class RSABloques {
 		e=80263681
 		n=27264083009 * 27264083017
 
-		María
+		MarÃ­a
 		n=8849169404252643679
 		e=196413997
 		n=2974755337 * 2974755367
@@ -41,14 +41,13 @@ public class RSABloques {
 		e=114340249
 		n=2290182972661 * 2290182972709 p y q
 		*/
-		System.out.println(alf.length());
-		String modelo1 = "wVBñú94wAU9gaÓc66:YCúVIwAlk)U9ULBMQ)-7caóNS8nvB08h 8úÍtÑJ)¿sYqLBÁ4duCsfkóx)aKE9(3:Hf(¿NmoGñ!DABBÑ6eÑrGUPábCñtdawqbíVWPbéecJÑM)LAc¿2ywRrñrth,896u6on?7b5J81v(LFTÉóN?sNB!ñr,:b877da4ñ4??8hdG ";
+		//System.out.println(alf.length());
+		//String modelo1 = "wVBÃ±Ãº94wAU9gaÃ“c66:YCÃºVIwAlk)U9ULBMQ)-7caÃ³NS8nvB08h 8ÃºÃ�tÃ‘J)Â¿sYqLBÃ�4duCsfkÃ³x)aKE9(3:Hf(Â¿NmoGÃ±!DABBÃ‘6eÃ‘rGUPÃ¡bCÃ±tdawqbÃ­VWPbÃ©ecJÃ‘M)LAcÂ¿2ywRrÃ±rth,896u6on?7b5J81v(LFTÃ‰Ã³N?sNB!Ã±r,:b877da4Ã±4??8hdG ";
 
-		String modelo2 = "ihJACM?NM?IXCÑÚí2ZoAóx¿eyK1(íiv7ctw!q2,whCX-x!5Éqñ¿a¿3CkO?gDsvNOQZEBÍÉtbIÚGTEa-rMmj¿wwpwhN6sJíXbldcÑzZw)XhS hñ7Zr8U11YThAó8Ó5éjíú¿toyI.ÚqétÁÍMáTk3MsMpT?,ÍÚMñDaIU9¿FÚdKMcHB!!4:cIéTtB.á5-8Hcéí9T";
+		//String modelo2 = "ihJACM?NM?IXCÃ‘ÃšÃ­2ZoAÃ³xÂ¿eyK1(Ã­iv7ctw!q2,whCX-x!5Ã‰qÃ±Â¿aÂ¿3CkO?gDsvNOQZEBÃ�Ã‰tbIÃšGTEa-rMmjÂ¿wwpwhN6sJÃ­XbldcÃ‘zZw)XhS hÃ±7Zr8U11YThAÃ³8Ã“5Ã©jÃ­ÃºÂ¿toyI.ÃšqÃ©tÃ�Ã�MÃ¡Tk3MsMpT?,Ã�ÃšMÃ±DaIU9Â¿FÃšdKMcHB!!4:cIÃ©TtB.Ã¡5-8HcÃ©Ã­9T";
 
 		String modelo3 = "júI,¿ Qb9,a5Ljw5DdgnwwEu áFsTlEp.éCkÍR.xjdj0X¿ñ8thÓxuZ.SgÑmAEIÍPJjóíJ2t:7cPApÉC2ncÉÓ?ñám¿J)trZ4gFú?kZÉAXñd6F¿0cm4hO?Jxc,q 2P,V7tóÑndoÚAadÓPAGLcbWDÑ(1pncYPnNKw:iéóEMívfZPDPa6ÍKU3mXkÓ)Ef1eÉy4GjLdxE";
-	
-		String modelo4 ="BUL mzaR3Qx-OíQDM6EagkWFbb¿V7loJHpÓécaxLLBuú28V¿ÍÍETáÁKqEcFóÑUV1vu5rRxIchMiSikUpyAqXuÍvjWccDbUV3-S9VMÚDóéÑKKHdeWfphL2AoHKíBpcuOKO-kúYhúMNo95uc20sw1BeMñj(v-ñz:óMwáPVjqK66Vonegcy1zvUgAÍ5eM5YSQG3e)Eúrmkj";
+		//String modelo4 ="BUL mzaR3Qx-OÃ­QDM6EagkWFbbÂ¿V7loJHpÃ“Ã©caxLLBuÃº28VÂ¿Ã�Ã�ETÃ¡Ã�KqEcFÃ³Ã‘UV1vu5rRxIchMiSikUpyAqXuÃ�vjWccDbUV3-S9VMÃšDÃ³Ã©Ã‘KKHdeWfphL2AoHKÃ­BpcuOKO-kÃºYhÃºMNo95uc20sw1BeMÃ±j(v-Ã±z:Ã³MwÃ¡PVjqK66Vonegcy1zvUgAÃ�5eM5YSQG3e)EÃºrmkj";
 
 		
 		//para sacar K --> floor(logn/log alf.leng)  MAXIMA caso de juan --> 12
@@ -65,10 +64,7 @@ public class RSABloques {
 			map_posiciones.put(String.valueOf(alf.charAt(i)), i);
 			
 		}
-		
-		
-		
-		
+	
 		// Juan
 		BigInteger p = new BigInteger("2290182972661");
 		BigInteger q = new BigInteger("2290182972709");
@@ -78,25 +74,25 @@ public class RSABloques {
 		
 		
 		BigInteger fi = p.subtract(BigInteger.ONE).multiply(q.subtract(BigInteger.ONE));
-		System.out.println("fi: "+fi);
-		System.out.println("modelo3 long: "+modelo3.length());
+		//System.out.println("fi: "+fi);
+		//System.out.println("modelo3 long: "+modelo3.length());
 		BigInteger d = e.modInverse(fi);
-		System.out.println("d: "+d); // clave privada
+		//System.out.println("d: "+d); // clave privada
 		
-		//TODO dividir en bloques de 13 (k+1) el modelo 3
+		// dividir en bloques de 13 (k+1) el modelo 3
 		// asociar cada letra con la posicion -1 del alf --> sacamos esa lista
 		// pasar esa lista a un umero entero de base alf.lengh
 		//por cada numero de bloque iobtenido hacer su modulo en n
 		//ese numero "m"  y el cociente en primer lugar y el resto en segundo lugar
 		
 		//dividir en bloques de 13 el modelo 3
-		String[] secuencias = getSecuencias(13, modelo3); // este 13 se calcula con maxima (floor) y ese ese valor +1
+		String[] secuencias = getSecuencias(13, modelo3); // este 13 se calcula con maxima (floor) y ese valor +1
 		for (int i = 0; i < secuencias.length; i++) {
 			System.out.println(secuencias[i]);
 		}
 		
 		// obtenemos la lista de posiciones de cada secuencia de 13 (en este caso)
-		int[][] posiciones = getPosicionesSecuencias(secuencias, 13, map_posiciones);
+		int[][] posiciones = getPosicionesSecuencias(secuencias, k.add(BigInteger.ONE).intValue(), map_posiciones);
 		
 		for (int i = 0; i < posiciones.length; i++) {
 			
@@ -124,27 +120,50 @@ public class RSABloques {
 			
 		}
 		
-		BigInteger cociente = BigInteger.ZERO;
-		BigInteger resto = BigInteger.ZERO;
+		
+		String mensaje_claro = "";
+		
 		
 		//TODO revisar esta parte
 		for (BigInteger bi : modulos) { // tenemos todas las "m", ahora hay que sacar el cociente y el resto de cada una dividiendo entre alf.lengh
-			
-			
-			
-			//TODO añadir la condicion de que si m<alf.lenght --> poner ceros a la izda.
-			
-			cociente = bi.divide(BigInteger.valueOf(alf.length())); // TODO queda demasiado grande para coger esta posicion en el alfabeto --> pasar el cociente a mod alf.leng????
-			resto = bi.mod(BigInteger.valueOf(alf.length()));// TODO este parece estar bien segun los apuntes
-			
-			
-			//se imprime el texto segun las posiciones del cociente y del resto.
-			System.out.print(alf.charAt(cociente.mod(BigInteger.valueOf(alf.length())).intValue()));
-			System.out.print(alf.charAt(resto.intValue()));
-			
+			mensaje_claro += decodificacionNumero(bi);
 		}
 		
+		System.out.println(mensaje_claro);
 	}
+	
+	
+	
+	public String decodificacionNumero(BigInteger numero) {
+		String text = "";
+		String mensaje_claro = "";
+		BigInteger resto = BigInteger.valueOf(0);
+		
+		ArrayList<BigInteger> restos = new ArrayList<BigInteger>();
+		
+		
+		while (numero.divide(BigInteger.valueOf(alf.length())) != BigInteger.valueOf(0)) {
+			resto = numero.remainder(BigInteger.valueOf(alf.length()));
+			numero = numero.divide(BigInteger.valueOf(alf.length()));
+			restos.add(resto);
+		}
+		restos.add(numero);
+
+		for (BigInteger bi : restos) {
+			text = text + alf.charAt(bi.intValue());
+		}
+		
+		for (int i = text.length() - 1; i >= 0; i--) {
+			mensaje_claro = mensaje_claro + text.charAt(i);
+		}
+
+
+		return mensaje_claro;
+	}
+	
+	
+	
+	
 	/**
 	 * Este metodo esta cogido de la clase CodificacionTextoNumero de la ractica 7
 	 * @param lista
@@ -165,6 +184,8 @@ public class RSABloques {
 		return num;
 
 	}
+	
+	
 	
 	
 	/**
@@ -203,7 +224,7 @@ public class RSABloques {
 		int modelo_long = modelo.length();
 		
 		
-		String[] secuencias = new String[modelo_long/grupos]; //TODO comprobar si la division no es exacta para añadir una posicion mas al vector
+		String[] secuencias = new String[modelo_long/grupos]; //TODO comprobar si la division no es exacta para aÃ±adir una posicion mas al vector
 		
 		int bloquesNi = 0, bloquesNj = grupos;
 		for (int i = 0; i < secuencias.length; i++) {
