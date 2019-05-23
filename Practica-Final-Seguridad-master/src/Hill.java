@@ -1,5 +1,5 @@
 
-import java.util.ArrayList;
+
 import java.util.HashMap;
 
 public class Hill {
@@ -51,7 +51,7 @@ public class Hill {
 			
 			int[][] resultados = multiplicarMatrices(clave_cifrado, traspuesta(posiciones), alf.length());
 			
-			imprimeMatriz(resultados);
+			imprimeMatriz(traspuesta(resultados));
 			
 			//tenemos los resultados en filas
 			resultados = traspuesta(resultados);
@@ -68,7 +68,7 @@ public class Hill {
 			
 			resultados = traspuesta(resultados);
 			
-			imprimeMatriz(resultados);
+			//imprimeMatriz(resultados);
 			
 			String mensaje_descifrado = numerosAPosiciones(resultados);
 			System.out.println("Mensaje descifrado: "+mensaje_descifrado);
@@ -104,13 +104,9 @@ public class Hill {
 			for (int j = 0; j < posiciones[0].length; j++) {
 			
 				mensaje_cifrado += alf.charAt(posiciones[i][j]);
-				
 			}
 		}
-		
 		return mensaje_cifrado;
-		
-		
 	}
 	
 	private int[][] getPosicionesSecuencias(String[] secuencias, int grupos, HashMap<String, Integer> map_posiciones){
@@ -124,8 +120,6 @@ public class Hill {
 				posiciones[i][j] = map_posiciones.get(String.valueOf(secuencias[i].charAt(j))); //en cada i de secuencias hay 13 letras, y j recorre esas letras y las pasa a las columnas de la matriz posiciones
 			}
 		}
-		
-		
 		return posiciones;
 	}
 	
@@ -141,9 +135,7 @@ public class Hill {
 			bloquesNi += grupos;
 			bloquesNj += grupos;
 		}
-
 		return secuencias;
-
 	}
 
 	private int[][] multiplicarMatrices(int[][] a, int[][] b, int modulo) {

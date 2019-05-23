@@ -4,20 +4,17 @@ public class Main {
 
 	public static void main (String[] args) {
     	
-    	//TODO mirar que solo codifica y decod multiplos de lalong de la matriz, revisar si el alfabeto se quiere de 27.
-    	//TODO buscar para modulo 29 ejemplos
     	
-    	
-    	/*int[][] clave_cifrado = {
-    			{1,2,3, }, 
-    			{0,4,5, }, 
-    			{1,0,6.}
+    	int[][] clave_cifrado = {
+    			{1,2,3}, 
+    			{0,4,5}, 
+    			{1,0,6}
     	};
     	int[][] clave_descifrado = {
     			{9,10,21}, 
     			{20,12,9}, 
     			{13,8,16}
-    	};*/
+    	};
     	
     	/*int[][] clave_cifrado = {
     			{1,0,3,3}, 
@@ -31,10 +28,10 @@ public class Main {
     			{6,10,5,9},
     			{6,12,17,23}
     	};*/
-    	System.out.println("");
+    	
     	
     	String alf = "abcdefghijklmnñopqrstuvwxyz .";
-		int[][] clave_cifrado = { 
+		/*int[][] clave_cifrado = { 
 				{ 3, 6, 9, 5, 1, 8, 6, 3, 4, 3, 12, 1 }, 
 				{ 5, 15, 1, 2, 3, 8, 6, 24, 5, 2, 5, 8 },
 				{ 9, 6, 3, 2, 4, 7, 8, 5, 1, 2, 3, 6 }, 
@@ -63,12 +60,7 @@ public class Main {
 				{ 7, 15, 7, 23, 9, 20, 1, 3, 13, 14, 12, 17 },
 				{ 17, 0, 27, 2, 17, 3, 4, 0, 4, 14, 9, 20 },
 				};
-    	/*
-    	 * anderr
-    	 * 
-    	 * boilhs
-    	 * 
-    	 */
+    	*/
     	Hill hill = new Hill(alf, clave_cifrado, clave_descifrado);
     	Scanner sc = new Scanner(System.in);
     	String numero = "";
