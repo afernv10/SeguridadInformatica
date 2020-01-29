@@ -1,0 +1,21 @@
+
+PRÁCTICA 06
+
+MARTES
+
+
+alf:"aábcdeéfghiíjklmnñoópqrstuúvwxyzAÁBCDEÉFGHIÍJKLMNÑOÓPQRSTUÚVWXYZ0123456789 ,.:-()"
+
+Ejercicio 1
+
+texto_01="FúhíYzHX,.Yz UW,xXzYiúuzTzTúzxYHúhxXMzTzXuH-kYVúuzzYÍÍ.zYzÍYzjUXh8YZzpúuzYkUhh.YVúuzTz,úuzXGYuÚXh-kYVúuzzYzÚYhHXuzWwUYÍXuMzX,zVXKWúzKXzÍYzxYÍVYzYxXWHúuYMzzKXzÍYzJWÚIxhWHYzÚY8zKXzÍYzWuÍYZ"
+
+Ejercicio 2
+
+texto_02="zñ(vxmaumEl39:lsheumcE52plimoomÁAejmhq-iérÁfcim-yha.yCóel -úoe.ryle-:me3 hrúÉ0mgdó4 nvrl)93B(krqÓpx02 -yh úAmxci4-úoiÁscx1m3-x(mjúifcim-mhvjKpn--5"
+
+Ejercicio 3
+
+texto_03="k.whh)ChQlp4JwhjGzhn8K4Rb)3td0Z3SJFtQpÚAnéÍZ)É"
+
+

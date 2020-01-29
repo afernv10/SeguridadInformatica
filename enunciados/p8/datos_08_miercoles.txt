@@ -1,0 +1,16 @@
+
+PRÁCTICA 08
+MIERCOLES
+
+
+alf="aábcdeéfghiíjklmnñoópqrstuúvwxyzAÁBCDEÉFGHIÍJKLMNÑOÓPQRSTUÚVWXYZ0123456789 ,.:-()"
+
+p=131414242343537725243372873
+g=10
+A=íyr5IR6ípDSAúY
+B=eXPKeSítÍííDN,
+a=63332323232451757353
+
+
+msj_cifrado=")bJ.WpfA)DJfHqsú1s:-FwódslkíxÁJnseóaDóíÉpaDúTF:-l7ÑñnnI:íNTny5A9ó9ÁEsqoú Hñ0D8óríouooMJsñ5róE),fzdBÉÓnf5fbÑóúxp7íETnñgK8ócéftáHÉ5o:UjBáDSYP69bñUUmg79hhFuií TKó1yázy.fd5bnNf.Ó):"
+

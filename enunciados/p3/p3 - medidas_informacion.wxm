@@ -1,0 +1,113 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 17.10.1 ] */
+/* [wxMaxima: comment start ]
+PRÁCTICA 03  (Curso 2018-2019) 
+Medidas de Información
+(realizado con versión 18.10.1 "1 de octubre de 2018")
+
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+p1:[ 5/6 , 1/6 ];
+cod1:[ "1" , "0"];
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+p2:[25,5,5,1] $
+cod2:["1", "01","000","001"] $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+lmedia(cod,p)
+Calcula la longitud media de un código para una lista de probabilidades. 
+Primer argumento: una lista de strings con las palabras código. 
+Segundo argumento: una lista con las probabilidades (también válido para frecuencias).
+No aproxima.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+lmedia(cod,p) := block(
+    [m,total],
+    m:length(cod),
+    total:sum(p[i],i,1,m),
+    1/total*sum(slength(cod[i])*p[i],i,1,m)
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+lmedia(cod1,p1);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+lmedia(cod2,p2);
+float(%);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+entropia(p). 
+Para calcular la entropia (medida en bits). 
+Argumento la lista de probabilidades (también válido para frecuencias). 
+No aproxima.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+entropia(p) := block(
+    [m,total],
+    m:length(p),
+    total:sum(p[i],i,1,m),
+    1/log(2)*(-1/total*sum(p[i]*log(p[i]),i,1,m) +log(total))
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+entropia(p1);
+float(%);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+entropia(p2);
+float(%);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+eficacia(cod,p). 
+Calcula la eficacia de un código bianrio para una lista de probabilidades. 
+Primer argumento: una lista de strings con las palabras código. 
+Segundo argumento: una lista con las probabilidades (también válido para frecuencias).
+No aproxima.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+ eficacia(cod,p) := block(
+    entropia(p)/lmedia(cod,p)
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+eficacia(cod1,p1);
+float(%);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+eficacia(cod2,p2);
+float(%);
+/* [wxMaxima: input   end   ] */
+
+
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

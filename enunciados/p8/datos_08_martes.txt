@@ -1,0 +1,16 @@
+
+PRÁCTICA 08
+MARTES
+
+
+alf="aábcdeéfghiíjklmnñoópqrstuúvwxyzAÁBCDEÉFGHIÍJKLMNÑOÓPQRSTUÚVWXYZ0123456789 ,.:-()"
+
+p=412393132131414242343537725369
+g=3
+A=áAlmTk7OyL0ÁeÁñ1
+B=boc ñÑ7B-ÍYó9ZIR
+b=574294653412121214213
+
+
+msj_cifrado="DuSqbáZéHdXooDóqúiKrÚífkníV iXúéúnUsP6Zdwd8a5Kláp F Zó,0MÁKn(N-id Va8:8jsfÉMpNúph.A tq,jMnÉeoDuqh SoÓjfknúSraV-irsAqbáZ7ÉíWooE-6óuJrááZ.Ld2uaMdoveAs.if1nú6dkDB6uuÑeálZ0QdXo5ZrahrAg)ék7Kd2uaDvéjuJsÓs)ñHéÉ  bOLÚI7 nQúJ(Nó,5lráwaAdZ6xmsÁÑi.E-X:1x-I5YYr"
+

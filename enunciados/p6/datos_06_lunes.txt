@@ -1,0 +1,21 @@
+
+PRÁCTICA 06
+
+LUNES
+
+
+alf:"aábcdeéfghiíjklmnñoópqrstuúvwxyzAÁBCDEÉFGHIÍJKLMNÑOÓPQRSTUÚVWXYZ0123456789 ,.:-()"
+
+Ejercicio 1
+
+texto_01="fJ25bJ cbP Í4J252úi54úbú5áiJ54úÚÚÍci c5.c5JváJd55nÁÍ2 ci5.ÍñcÚ2J25 cúÚÓJ254úbI,Í4J.J2:5c254ÍcÚ ú:5IcÚú55,J5,BvÍ4J5WP2Í4J5c25báH52ci4Í,,Jd"
+
+Ejercicio 2
+
+texto_02="v(-máubDcxh-r(3qvvcóe3dkoa.xtFq(-h(sévcFf3oyáatmmw:pdhí írkt83-sñrpmuml3éeeo.Lwx8hgs3lbmltlñdq:ibmuml3fsmtbncfljos3hbPcFf -gírtAmym(-p tfEíÉá:da"
+
+Ejercicio 3
+
+texto_03="ó73Úl:76R89WM gáW2:Ú Da 9ÍwmDb5Ru2x"
+
+

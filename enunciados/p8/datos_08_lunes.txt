@@ -1,0 +1,16 @@
+
+PRÁCTICA 08
+LUNES
+
+
+alf="aábcdeéfghiíjklmnñoópqrstuúvwxyzAÁBCDEÉFGHIÍJKLMNÑOÓPQRSTUÚVWXYZ0123456789 ,.:-()"
+
+p=93132131414242343537725361
+g=3
+A="cl)jEoÉGjíSki"
+B="h)L-zceJ(m,íLn"
+a=63336484957353
+
+
+msj_cifrado="PÓY7fÚóE7cTÁc-h0Y2ZÑhE7c9úubyÓY4eV:WHk7sqSe7í4(VazHcbáo3(0o4ew)I7lÚáñ3ñ0íUT15PÚc)úBSq0Yé4wóSÓiNá:Áe4 24wnYQc3úúSsÚéeTÚay8mLñw0mÓiZ(wrSYiUú:SCFgZdG(IHz-k:éqF74eQ5XQcTkuce45T:C5F2kQc:SU0 -ZwWuÍctge.sFD4dW)EHgfñk.iGYMSoZD"
+
